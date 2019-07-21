@@ -1,0 +1,73 @@
+#define LS A2
+#define RS A5
+
+#define lm1 2
+#define lm2 3
+#define rm1 4
+#define rm2 5
+
+
+
+
+void setup() {
+  pinMode (RS,INPUT);
+  pinMode (LS,OUTPUT);
+  pinMode (lm1,OUTPUT);
+  pinMode (lm2,OUTPUT);
+  pinMode (rm1,OUTPUT);
+  pinMode (rm2,OUTPUT);
+  
+}
+
+void Forward() {
+
+  digitalWrite (lm1,HIGH);
+  digitalWrite (lm2,LOW);
+  digitalWrite (rm1,HIGH);
+  digitalWrite (rm2,LOW);
+}
+
+void Stop () {
+
+  digitalWrite (lm1,LOW);
+  digitalWrite (lm2,LOW);
+  digitalWrite (rm1,LOW);
+  digitalWrite (rm2,LOW);
+}
+
+void Right () {
+
+  digitalWrite (lm1,HIGH);
+  digitalWrite (lm2,LOW);
+  digitalWrite (rm1,LOW);
+  digitalWrite (rm2,HIGH);
+    
+ }
+
+void Left () {
+
+  digitalWrite (lm1,LOW);
+  digitalWrite (lm2,HIGH);
+  digitalWrite (rm1,HIGH);
+  digitalWrite (rm2,LOW);
+}
+
+
+void loop() {
+
+  if((analogRead (LS)==LOW) && (analogRead (RS)==LOW))
+     
+       Forward();
+   if ((analogRead (LS)==HIGH) &&  (analogRead (RS) == HIGH))
+
+     Stop();
+
+   if ((analogRead (LS)==HIGH) && (analogRead (RS) == LOW))
+
+       Right();
+
+   if ((analogRead (LS)==LOW) && (analogRead (RS) ==HIGH))
+
+      Left();
+
+}
